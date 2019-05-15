@@ -11,7 +11,7 @@ w.rjnumber = "RJ231054"
 w.name = "催眠スクール～催眠にかかる為の催眠音声～"
 w.club = "エロトランス"
 w.series = None
-w.publish_data = datetime.datetime(2018, 9, 15)
+w.publish_date = datetime.datetime(2018, 9, 15)
 
 r = Record()
 r.dlcount = 5955

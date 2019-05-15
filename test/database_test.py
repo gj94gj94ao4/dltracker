@@ -18,8 +18,7 @@ def gen_work(index) -> Work:
     w.name = ["催眠スクール～催眠にかかる為の催眠音声～",
               "射精させてくれない?! 自動手淫人形の耳舐めと淫語と手コキと寸止め - 痴女ドール フレデリカ -【超高音質バイノーラル】"][index]
     w.club = ["エロトランス", "VOICE LOVER"][index]
-    w.series = [None, "自動手淫人形"][index]
-    w.publish_data = [datetime.datetime(
+    w.publish_date = [datetime.datetime(
         2018, 9, 15), datetime.datetime(2018, 5, 26)][index]
     return w
 
