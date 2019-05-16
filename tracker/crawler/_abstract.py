@@ -30,3 +30,12 @@ class DLCrawler():
 
     def get_series(self) -> str:
         return self.series
+
+    def get_club(self) -> str:
+        return self.club
+
+    def fetch_work(self):
+        pass
+    
+    def fetch_work_record(self):
+        pass

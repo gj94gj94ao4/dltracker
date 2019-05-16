@@ -5,5 +5,5 @@ HEADERS = {
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36",
 }  # Actually didn't need it.
 
-from .maniax import ManiaxCrawler
-from ._interface import DLCrawler
+from ._abstract import DLCrawler
+from ._builder import DLCrawlerBuilder

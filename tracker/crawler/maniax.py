@@ -4,7 +4,7 @@ import asyncio
 from lxml import etree
 
 from . import HEADERS
-from ._interface import DLCrawler
+from ._abstract import DLCrawler
 
 
 class ManiaxCrawler(DLCrawler):

@@ -1,4 +1,4 @@
-from tracker.crawler import ManiaxCrawler
+from tracker.crawler.maniax import ManiaxCrawler
 
 crawler = ManiaxCrawler("RJ231054")
 crawler.fetch_work()
