@@ -13,8 +13,8 @@ def test_get_name():
     assert crawler.get_name() == "催眠スクール～催眠にかかる為の催眠音声～"
 
 
-def test_get_rjnumber():
-    assert crawler.get_rjnumber() == "RJ231054"
+def test_get_uid():
+    assert crawler.get_uid() == "RJ231054"
 
 
 def test_get_dl_count():

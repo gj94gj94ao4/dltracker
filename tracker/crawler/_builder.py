@@ -7,15 +7,15 @@ from ._abstract import DLCrawler
 class DLCrawlerBuilder():
 
     def __init__(self):
-        self.rjnumber: str = None
+        self.uid: str = None
 
-    def set_rjnumber(self, rjnumber: str):
-        self.rjnumber = rjnumber
+    def set_uid(self, uid: str):
+        self.uid = uid
         return self
 
     def build(self) -> DLCrawler:
-        if self.rjnumber:
-            self.rjnumber = self.rjnumber.upper()
-            if re.match(r'RJ\d{1,8}', self.rjnumber):
-                return ManiaxCrawler(self.rjnumber)
+        if self.uid:
+            self.uid = self.uid.upper()
+            if re.match(r'RJ\d{1,8}', self.uid):
+                return ManiaxCrawler(self.uid)
         raise Exception("no matched Crawler class")

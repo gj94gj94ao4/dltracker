@@ -9,13 +9,13 @@ from ._abstract import DLCrawler
 
 class ManiaxCrawler(DLCrawler):
 
-    def __init__(self, rjnumber: str):
-        self.rjnumber = rjnumber
-        self.link = f"https://www.dlsite.com/maniax/work/=/product_id/{rjnumber.upper()}.html"
+    def __init__(self, uid: str):
+        self.uid = uid
+        self.link = f"https://www.dlsite.com/maniax/work/=/product_id/{uid.upper()}.html"
         
 
     def fetch_work(self):
-        info_url = f"https://www.dlsite.com/maniax/product/info/ajax?product_id={self.rjnumber.upper()}&cdn_cache_min=1"
+        info_url = f"https://www.dlsite.com/maniax/product/info/ajax?product_id={self.uid.upper()}&cdn_cache_min=1"
         body_url = self.link
         self.body_response = requests.get(body_url, headers=HEADERS)
         self.info_response = requests.get(info_url, headers=HEADERS)
@@ -28,7 +28,7 @@ class ManiaxCrawler(DLCrawler):
 
     def _parse_work_info(self):
         jres = json.loads(self.info_response.text)
-        jres = jres[self.rjnumber]
+        jres = jres[self.uid]
         self.dl_count = int(jres['dl_count'])
         self.wishlist_count = int(jres['wishlist_count'])
         self.price = jres['price']

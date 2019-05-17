@@ -6,8 +6,8 @@ from sqlalchemy.orm import relationship
 from . import Base
 
 association_table = Table('works_cvs', Base.metadata,
-                          Column('work_rjnumber', String(10),
-                                 ForeignKey('works.rjnumber')),
+                          Column('work_uid', String(10),
+                                 ForeignKey('works.uid')),
                           Column('cv_id', Integer, ForeignKey('cvs.id'))
                           )
 
@@ -16,7 +16,7 @@ association_table = Table('works_cvs', Base.metadata,
 class Record(Base):
     __tablename__ = "records"
     id = Column(Integer, primary_key=True)
-    rjnumber = Column(String(10), ForeignKey('works.rjnumber'))
+    uid = Column(String(10), ForeignKey('works.uid'))
     work = relationship("Work", back_populates="records")
     timestamp = Column(DateTime)
     dlcount = Column(Integer)
@@ -38,7 +38,7 @@ class CV(Base):
 @dataclass
 class Work(Base):
     __tablename__ = 'works'
-    rjnumber = Column(String(10), primary_key=True, unique=True)
+    uid = Column(String(10), primary_key=True, unique=True)
     name = Column(String(200))
     club = Column(String(60), unique=True)
     series = Column(String(200), nullable=True)

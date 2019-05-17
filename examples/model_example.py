@@ -7,7 +7,7 @@ db.init_db()
 
 
 w = Work()
-w.rjnumber = "RJ231054"
+w.uid = "RJ231054"
 w.name = "催眠スクール～催眠にかかる為の催眠音声～"
 w.club = "エロトランス"
 w.series = None
@@ -15,7 +15,7 @@ w.publish_date = datetime.datetime(2018, 9, 15)
 
 r = Record()
 r.dlcount = 5955
-r.rjnumber = "RJ231054"
+r.uid = "RJ231054"
 r.favoritecount = 4735
 r.timestamp = datetime.datetime(2019, 5, 14, hour=15)  # 之後get需要包含所在時區
 

@@ -10,8 +10,8 @@ class DLCrawler():
     def get_name(self) -> str:
         return self.name
 
-    def get_rjnumber(self) -> str:
-        return self.rjnumber
+    def get_uid(self) -> str:
+        return self.uid
 
     def get_dl_count(self) -> int:
         return self.dl_count
