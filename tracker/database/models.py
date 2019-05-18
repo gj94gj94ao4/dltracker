@@ -19,8 +19,8 @@ class Record(Base):
     uid = Column(String(10), ForeignKey('works.uid'))
     work = relationship("Work", back_populates="records")
     timestamp = Column(DateTime)
-    dlcount = Column(Integer)
-    favoritecount = Column(Integer)
+    dl_count = Column(Integer)
+    wishlist_count = Column(Integer)
 
 
 @dataclass
