@@ -6,8 +6,7 @@ from ._abstract import DLCrawler
 
 class DLCrawlerBuilder():
 
-    def __init__(self):
-        self.uid: str = None
+    uid: str
 
     def set_uid(self, uid: str):
         self.uid = uid

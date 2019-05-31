@@ -12,13 +12,11 @@ class ManiaxCrawler(DLCrawler):
     def __init__(self, uid: str):
         self.uid = uid
         self.link = f"https://www.dlsite.com/maniax/work/=/product_id/{uid.upper()}.html"
-        
+        self.info_url = f"https://www.dlsite.com/maniax/product/info/ajax?product_id={self.uid.upper()}&cdn_cache_min=1"
 
     def fetch_work(self):
-        info_url = f"https://www.dlsite.com/maniax/product/info/ajax?product_id={self.uid.upper()}&cdn_cache_min=1"
-        body_url = self.link
-        self.body_response = requests.get(body_url, headers=HEADERS)
-        self.info_response = requests.get(info_url, headers=HEADERS)
+        self.body_response = requests.get(self.link, headers=HEADERS)
+        self.info_response = requests.get(self.info_url, headers=HEADERS)
         self._parse_body()
         self._parse_work_info()
 
