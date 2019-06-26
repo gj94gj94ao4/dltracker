@@ -24,22 +24,22 @@ def add(uid: str):
             if not cv:
                 cv = CV(name=cv_name)
             w.cvs.append(cv)
-        w.publish_date = datetime.strptime(c.get_publish_date(), "%Y年%m月%d日")
+        w.publish_date = datetime.strptime(c.get_publish_date()[:11], "%Y年%m月%d日")
         sess.add(w)
         sess.commit()
     else:
         return f'work exist: {result}'
     sess.close()
-    return f'work {uid} fetch finish.'
+    return f'{uid} has added.'
 
 
-def record(datetime_: datetime, work: Work):
+def record(datetime_: datetime, uid: str):
     sess = db.Session()
     try:
-        sess.query(Work).filter(Work.uid == work.uid).one()  # Check work exist
+        sess.query(Work).filter(Work.uid == uid).one()  # Check work exist
     except NoResultFound:
         raise Exception("沒有這個work拉")
-    c = DLCrawlerBuilder().set_uid(work.uid).build()
+    c = DLCrawlerBuilder().set_uid(uid).build()
     c.fetch_work_record()
     r = Record()
     r.uid = c.get_uid()
@@ -49,3 +49,16 @@ def record(datetime_: datetime, work: Work):
     sess.add(r)
     sess.commit()
     sess.close()
+
+def _delete(uid:str):
+    sess = db.Session()
+    result = sess.query(Work).filter(Work.uid == uid).one()
+    sess.delete(result)
+    sess.commit()
+    sess.close()
+    return f'{uid} has deleted.'
+
+def update(uid:str):
+    _delete(uid)
+    add(uid)
+    return f"{uid} has renewed."

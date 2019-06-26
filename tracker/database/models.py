@@ -40,7 +40,7 @@ class Work(Base):
     __tablename__ = 'works'
     uid = Column(String(10), primary_key=True, unique=True)
     name = Column(String(200))
-    club = Column(String(60), unique=True)
+    club = Column(String(60))
     series = Column(String(200), nullable=True)
     records = relationship("Record", back_populates="work")
     publish_date = Column(DateTime)
