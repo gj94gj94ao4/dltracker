@@ -36,11 +36,11 @@ class ManiaxCrawler(DLCrawler):
             self.body_response.text, etree.HTMLParser())
         outline_element = self.html.xpath('//table[@id="work_outline"]')[0]
         self.publish_date = None
-        self.cvs = None
-        self.series = None
+        self.cvs = []
+        self.series = ""
         for e in outline_element.xpath('tr'):
             key = e.xpath('th')[0].text
-            if key == '販売日':
+            if key == '販売日' or key == "販賣日":
                 self.publish_date = e.xpath('td/a')[0].text
             elif key == '声優':
                 self.cvs = [e.text for e in e.xpath('td/a')]
