@@ -1,8 +1,10 @@
 version: '3'
 
 services:
-  dltrcker:
-    # image: dltrcker
+  web:
+    image: gj94/dltracker:0.0.1
     build: .
+    volumes:
+      - ./db.sqlite3:/app/db.sqlite3
     ports:
       - 5000:5000

@@ -8,7 +8,7 @@ FROM python:latest
 # If you prefer miniconda:
 #FROM continuumio/miniconda3
 
-LABEL Name=dltrcker Version=0.0.1
+LABEL Name=dltracker Version=0.0.1
 EXPOSE 5000
 
 WORKDIR /app
@@ -22,9 +22,9 @@ CMD ["python3", "app.py"]
 # Using pipenv:
 # RUN python3 -m pip install pipenv
 # RUN pipenv install --ignore-pipfile
-# # CMD ["pipenv", "run", "python3", "-m", "dltrcker"]
+# # CMD ["pipenv", "run", "python3", "-m", "dltracker"]
 # CMD ["pipenv", "run", "python3", "--version"]
 
 # Using miniconda (make sure to replace 'myenv' w/ your environment name):
 #RUN conda env create -f environment.yml
-#CMD /bin/bash -c "source activate myenv && python3 -m dltrcker"
+#CMD /bin/bash -c "source activate myenv && python3 -m dltracker"
