@@ -1,8 +1,13 @@
 import datetime
 
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
 import tracker.database as db
 from tracker.database.models import *
 
+db.engine = create_engine('sqlite://', echo=True)
+db.Session = sessionmaker(bind=db.engine)
 db.init_db()
 
 
