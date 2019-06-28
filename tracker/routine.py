@@ -23,7 +23,9 @@ def _task():
         print(f"in work {work}")
         record(now, work)
     print('rocord finish!!')
-    s.enter(3600, 1, _task)
+    d = datetime.now()
+    next_ = datetime(d.year, d.month, d.day, d.hour + 1)
+    s.enterabs(time.mktime(next_.timetuple()), 1, _task)
 
 
 def run():

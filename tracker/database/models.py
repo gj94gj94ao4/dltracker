@@ -2,6 +2,7 @@ from dataclasses import dataclass
 
 from sqlalchemy import Table, Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
+from typing import List
 
 from . import Base
 
@@ -18,16 +19,16 @@ class Record(Base):
     id = Column(Integer, primary_key=True)
     uid = Column(String(10), ForeignKey('works.uid'))
     work = relationship("Work", back_populates="records")
-    timestamp = Column(DateTime)
-    dl_count = Column(Integer)
-    wishlist_count = Column(Integer)
+    timestamp:DateTime = Column(DateTime)
+    dl_count:int = Column(Integer)
+    wishlist_count:int = Column(Integer)
 
 
 @dataclass
 class CV(Base):
     __tablename__ = 'cvs'
     id = Column(Integer, primary_key=True)
-    name = Column(String(50))
+    name:str = Column(String(50))
     works = relationship(
         "Work",
         secondary=association_table,
@@ -38,13 +39,13 @@ class CV(Base):
 @dataclass
 class Work(Base):
     __tablename__ = 'works'
-    uid = Column(String(10), primary_key=True, unique=True)
-    name = Column(String(200))
-    club = Column(String(60))
-    series = Column(String(200), nullable=True)
-    records = relationship("Record", back_populates="work")
-    publish_date = Column(DateTime)
-    cvs = relationship(
+    uid:str = Column(String(10), primary_key=True, unique=True)
+    name:str = Column(String(200))
+    club:str = Column(String(60))
+    series:str = Column(String(200), nullable=True)
+    records:Record = relationship("Record", back_populates="work")
+    publish_date:DateTime = Column(DateTime)
+    cvs:CV = relationship(
         "CV",
         secondary=association_table,
         back_populates="works"
